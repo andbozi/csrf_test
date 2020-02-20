@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+
+<body>
+    <form action="/submit.html" method="POST" name="0" onsubmit="alertvalues(0)">
+        <input type="text" name="inputvalue" id="" value="inputvalue0">
+        <button type="submit">SUBMIT</button>
+    </form>
+    <form action="/submit.html" method="POST" name="1" onsubmit="alertvalues(1)">
+        <input type="text" name="inputvalue" id="" value="inputvalue1">
+        <button type="submit">SUBMIT</button>
+    </form>
+    <form action="/submit.html" method="POST" name="2" onsubmit="alertvalues(2)">
+        <input type="text" name="inputvalue" id="" value="inputvalue2">
+        <button type="submit">SUBMIT</button>
+    </form>
+    <form action="/submit.html" method="POST" name="3" onsubmit="alertvalues(3)">
+        <input type="text" name="inputvalue" id="" value="inputvalue3">
+        <button type="submit">SUBMIT</button>
+    </form>
+    <form action="/submit.html" method="POST" name="4" onsubmit="alertvalues(4)">
+        <input type="text" name="inputvalue" id="" value="inputvalue4">
+        <button type="submit">SUBMIT</button>
+    </form>
+
+
+    <script type="text/javascript">
+        function setcsrf () {
+            var csrfInput = document.createElement('INPUT');
+            csrfInput.setAttribute('name', 'csrfvalue');
+            csrfInput.setAttribute('value', 'thisisthecsrf');
+            csrfInput.setAttribute('type', 'hidden');
+            var formList = document.getElementsByTagName('form');
+            for (var i = 0; i < formList.length; i++) {
+                formList[i].insertAdjacentElement('afterbegin', csrfInput.cloneNode());
+            }
+        }
+
+        function alertvalues (id) {
+            var formChildrenList = document.getElementsByName(id)[0];
+            for (var i = 0; i < formChildrenList.length; i++) {
+                alert(`Node type: ${formChildrenList[i].tagName}\nNode name: '${formChildrenList[i].name}'\nNode value: '${formChildrenList[i].value}'`);
+            }
+        }
+
+        setcsrf();
+    </script>
+</body>
+
+</html>
